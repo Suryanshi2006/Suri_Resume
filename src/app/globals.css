@@ -23,9 +23,15 @@ html, body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
-  cursor: none; /* Custom cursor will take over */
-  overflow-x: hidden;
-  overscroll-behavior: none; /* Better lenis feel */
+  overflow-x: clip; /* clip is safer than hidden for mobile scrolling */
+}
+
+/* Only apply these immersive overrides on desktop (devices with a precise mouse) */
+@media (pointer: fine) {
+  html, body {
+    cursor: none; /* Custom cursor will take over */
+    overscroll-behavior: none; /* Better lenis feel, but breaks mobile */
+  }
 }
 
 /* Base Headings */
