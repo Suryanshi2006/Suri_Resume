@@ -51,37 +51,41 @@ export default function FeaturedWorks() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     
-    if (sectionRef.current && containerRef.current) {
-      const container = containerRef.current;
-      const totalScroll = container.scrollWidth - window.innerWidth;
-      
-      gsap.to(container, {
-        x: -totalScroll,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: `+=${totalScroll}`,
-          pin: true,
-          scrub: 1.5, // Heavier, more cinematic scroll feel
+    let ctx = gsap.context(() => {
+      let mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        if (sectionRef.current && containerRef.current) {
+          const container = containerRef.current;
+          const totalScroll = container.scrollWidth - window.innerWidth;
+          
+          gsap.to(container, {
+            x: -totalScroll,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: `+=${totalScroll}`,
+              pin: true,
+              scrub: 1.5, 
+            }
+          });
         }
       });
-    }
+    }, sectionRef);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="h-screen w-full bg-[#050505] overflow-hidden relative">
+    <section ref={sectionRef} className="min-h-screen md:h-screen w-full bg-[#050505] overflow-hidden relative">
       <div className="absolute top-10 left-10 md:top-20 md:left-20 z-10">
         <h2 className="font-bebas text-4xl md:text-6xl text-[#f4f4f4] mix-blend-difference">FEATURED WORKS</h2>
       </div>
       
       <div 
         ref={containerRef} 
-        className="flex h-full items-center pl-[10vw] pr-[20vw] gap-[10vw] md:gap-[20vw] w-fit"
+        className="flex flex-col md:flex-row h-full items-center px-4 md:pl-[10vw] md:pr-[20vw] gap-8 md:gap-[20vw] w-full md:w-fit pt-32 md:pt-0 pb-20 md:pb-0"
       >
         {works.map((work, idx) => (
           <a 
@@ -89,7 +93,7 @@ export default function FeaturedWorks() {
             href={work.link}
             target="_blank"
             rel="noreferrer"
-            className="group relative w-[80vw] md:w-[60vw] h-[60vh] md:h-[70vh] shrink-0 cursor-pointer overflow-hidden bg-[#111] block"
+            className="group relative w-full md:w-[60vw] h-[50vh] md:h-[70vh] shrink-0 cursor-pointer overflow-hidden bg-[#111] block rounded-sm md:rounded-none"
             data-cursor="PLAY"
           >
             {/* Background Placeholder with Grain & Color */}
