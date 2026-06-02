@@ -22,7 +22,7 @@ export default function Contact() {
               <ArrowUpRight className="group-hover:rotate-45 transition-transform" />
             </a>
             <a 
-              href="https://drive.google.com/drive/folders/1RBWFksl17xpxoy6hrF5wVhHvwvzEtBam" 
+              href="https://drive.google.com/file/d/1F5m8lLCJ-nJwI3Y4QMGrn02UP7EchPrq/view?usp=sharing" 
               target="_blank"
               rel="noreferrer"
               className="group flex items-center gap-2 font-inter text-xl uppercase tracking-widest border border-[#333] w-fit px-8 py-4 rounded-full hover:bg-white hover:text-black transition-colors duration-300"
