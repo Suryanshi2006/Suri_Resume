@@ -8,7 +8,7 @@ import * as random from "maath/random/dist/maath-random.esm";
 import { motion } from "framer-motion";
 
 function ParticleBackground() {
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   // Generate random points in a sphere
   const sphere = random.inSphere(new Float32Array(5001), { radius: 1.5 });
 

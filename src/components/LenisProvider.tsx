@@ -13,6 +13,7 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
 
   return (
     <ReactLenis root options={{ lerp: 0.05, wheelMultiplier: 1, smoothWheel: true }}>
+      {/* @ts-ignore React 19 type clash */}
       {children}
     </ReactLenis>
   );
