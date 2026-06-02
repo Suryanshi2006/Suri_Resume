@@ -82,17 +82,16 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
+          transition={{ duration: 1.5, delay: 2.5 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
         >
-          <span className="font-inter text-xs tracking-widest text-[#555] uppercase mb-2">Scroll to explore</span>
-          <div className="w-[1px] h-12 bg-[#333] relative overflow-hidden">
-            <motion.div
-              className="w-full h-full bg-[#f4f4f4]"
-              animate={{ y: ["-100%", "100%"] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-            />
-          </div>
+          <motion.span 
+            animate={{ opacity: [0.3, 1, 0.3] }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            className="font-inter text-[10px] tracking-[0.3em] text-[#a0a0a0] uppercase"
+          >
+            [ Scroll ]
+          </motion.span>
         </motion.div>
       </div>
     </section>
